@@ -1,0 +1,105 @@
+@import 'pretendard/dist/web/static/pretendard.css';
+@import 'tailwindcss';
+
+@layer theme, base, components, utilities;
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Base colors */
+  --white: #ffffff;
+  --white-soft: #f8f8f8;
+  --white-mute: #f2f2f2;
+  --black: #181818;
+  --black-soft: #222222;
+  --black-mute: #282828;
+  --indigo: #2c3e50;
+  --green: hsla(160, 100%, 37%, 1);
+
+  /* Light theme */
+  --background: var(--white);
+  --background-soft: var(--white-soft);
+  --background-mute: var(--white-mute);
+  --foreground: var(--indigo);
+  --border: rgba(60, 60, 60, 0.12);
+  --border-hover: rgba(60, 60, 60, 0.29);
+  --accent: var(--green);
+  --accent-hover: hsla(160, 100%, 37%, 0.2);
+
+  /* Spacing */
+  --section-gap: 160px;
+}
+
+.dark {
+  --background: var(--black);
+  --background-soft: var(--black-soft);
+  --background-mute: var(--black-mute);
+  --foreground: var(--white);
+  --border: rgba(84, 84, 84, 0.48);
+  --border-hover: rgba(84, 84, 84, 0.65);
+}
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-background-soft: var(--background-soft);
+  --color-background-mute: var(--background-mute);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
+  /* Spacing */
+  --spacing-section-gap: var(--section-gap);
+
+  /* Typography */
+  --font-pretendard: Pretendard, sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply box-border m-0 font-normal;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground font-pretendard antialiased;
+    transition:
+      color 0.5s,
+      background-color 0.5s;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  #app {
+    @apply max-w-7xl mx-auto p-8 font-normal;
+  }
+
+  a,
+  .green {
+    @apply no-underline text-accent transition-all duration-400 px-1 py-0.5;
+  }
+
+  @media (hover: hover) {
+    a:hover {
+      @apply bg-accent-hover;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      @apply flex items-center;
+    }
+
+    #app {
+      @apply grid grid-cols-2 px-8;
+    }
+  }
+}
