@@ -1,6 +1,6 @@
 {
-  "name": "vue3-starter-template",
-  "version": "0.2.0",
+  "name": "word-addin-kit",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "engines": {
